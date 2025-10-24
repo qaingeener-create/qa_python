@@ -51,6 +51,29 @@ class TestBooksCollector:
         collector.delete_book_from_favorites(book_name)
         assert book_name not in collector.get_list_of_favorites_books()
 
+
     
+    def test_add_new_book_invalid_name_too_long(self):
+        collector = BooksCollector()
+        book_name = "Эта книга имеет слишком длинное название, превышающее допустимые 40 символов"
+        collector.add_new_book(book_name)
+        assert book_name not in collector.get_books_genre()
+
+    
+    def test_add_new_book_duplicate(self):
+        collector = BooksCollector()
+        book_name = "Повторяющаяся книга"
+        collector.add_new_book(book_name)
+        collector.add_new_book(book_name)  
+        assert len(collector.get_books_genre()) == 1  
+
+    
+    def test_set_book_genre_non_existent_book(self):
+        collector = BooksCollector()
+        book_name = "Неизвестная книга"
+        genre = "Фантастика"
+        collector.set_book_genre(book_name, genre)
+        assert collector.get_book_genre(book_name) is None
+
 
 
