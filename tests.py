@@ -6,7 +6,7 @@ class TestBooksCollector:
         collector = BooksCollector()
         book_name = "Гордость и предубеждение и зомби"
         collector.add_new_book(book_name)
-        assert book_name in collector.get_books_genre()
+        assert book_name in collector.get_books_genre() 
 
     def test_set_book_genre(self):
         collector = BooksCollector()
@@ -14,7 +14,7 @@ class TestBooksCollector:
         genre = "Фантастика"
         collector.add_new_book(book_name)
         collector.set_book_genre(book_name, genre)
-        assert collector.get_book_genre(book_name) == genre
+        assert collector.get_book_genre(book_name) == genre 
 
     def test_get_books_with_specific_genre(self):
         collector = BooksCollector()
@@ -24,7 +24,7 @@ class TestBooksCollector:
         collector.set_book_genre("Книга2", "Комедии")
         books = collector.get_books_with_specific_genre("Комедии")
         assert "Книга1" in books
-        assert "Книга2" in books
+        assert "Книга2" in books 
 
     def test_get_books_for_children(self):
         collector = BooksCollector()
@@ -34,14 +34,14 @@ class TestBooksCollector:
         collector.set_book_genre("Взрослая книга", "Ужасы")
         children_books = collector.get_books_for_children()
         assert "Детская книга" in children_books
-        assert "Взрослая книга" not in children_books
+        assert "Взрослая книга" not in children_books 
 
     def test_add_book_in_favorites(self):
         collector = BooksCollector()
         book_name = "Книга для избранных"
         collector.add_new_book(book_name)
         collector.add_book_in_favorites(book_name)
-        assert book_name in collector.get_list_of_favorites_books()
+        assert book_name in collector.get_list_of_favorites_books() 
 
     def test_delete_book_from_favorites(self):
         collector = BooksCollector()
@@ -49,7 +49,7 @@ class TestBooksCollector:
         collector.add_new_book(book_name)
         collector.add_book_in_favorites(book_name)
         collector.delete_book_from_favorites(book_name)
-        assert book_name not in collector.get_list_of_favorites_books()
+        assert book_name not in collector.get_list_of_favorites_books() 
 
 
     
@@ -57,7 +57,7 @@ class TestBooksCollector:
         collector = BooksCollector()
         book_name = "Эта книга имеет слишком длинное название, превышающее допустимые 40 символов"
         collector.add_new_book(book_name)
-        assert book_name not in collector.get_books_genre()
+        assert book_name not in collector.get_books_genre() 
 
     
     def test_add_new_book_duplicate(self):
@@ -65,7 +65,7 @@ class TestBooksCollector:
         book_name = "Повторяющаяся книга"
         collector.add_new_book(book_name)
         collector.add_new_book(book_name)  
-        assert len(collector.get_books_genre()) == 1  
+        assert len(collector.get_books_genre()) == 1   
 
     
     def test_set_book_genre_non_existent_book(self):
@@ -73,7 +73,7 @@ class TestBooksCollector:
         book_name = "Неизвестная книга"
         genre = "Фантастика"
         collector.set_book_genre(book_name, genre)
-        assert collector.get_book_genre(book_name) is None
+        assert collector.get_book_genre(book_name) is None 
 
 
 
